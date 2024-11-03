@@ -70,7 +70,8 @@ locals {
   
   # Get git repo
   cd /home/ubuntu
-  git clone https://github.com/Xujia118/Trading-Bot.git
+  sudo git clone https://github.com/Xujia118/Trading-Bot.git
+  sudo git config --global --add safe.directory /home/ubuntu/Trading-Bot
 
   # Build docker image
   cd ~/Trading-Bot
