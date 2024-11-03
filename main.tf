@@ -20,3 +20,18 @@ module "ec2" {
   ami_id       = var.ami_id
   instance_type = var.instance_type
 }
+
+# Call S3 module
+module "s3" {
+  source = "./modules/s3"
+}
+
+resource "aws_s3_object" "ec2_instance_id_file" {
+  bucket = module.s3.bucket_name
+  key = "ec2-instance-id.txt"
+  content = module.ec2.instance_id
+
+  tags = {
+    Name: "EC2 Instance ID"
+  }
+}
