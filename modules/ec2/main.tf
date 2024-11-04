@@ -50,6 +50,10 @@ locals {
   sudo apt update
   sudo apt upgrade -y
 
+  # Install Python and pip
+  sudo apt install -y python3
+  sudo apt install -y python3-pip
+
   # Install Docker
   # Add Docker's official GPG key:
   sudo apt-get update
@@ -73,8 +77,11 @@ locals {
   sudo git clone https://github.com/Xujia118/Trading-Bot.git
   sudo git config --global --add safe.directory /home/ubuntu/Trading-Bot
 
-  # Build docker image
+  # Install Python dependencies
   cd ~/Trading-Bot
+  sudo pip3 install -r requirements.txt
+
+  # Build docker image
   sudo docker build -t us_stocks_robot .
   sudo docker run --name us_stocks_robot us_stocks_robot
 
