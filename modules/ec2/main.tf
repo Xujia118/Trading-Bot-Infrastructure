@@ -22,7 +22,7 @@ resource "aws_instance" "stocks_trading_robot_instance" {
   ami           = var.ami_id
   instance_type = var.instance_type
   security_groups = [ aws_security_group.ec2_sg.name ]
-  key_name = "mbp17"
+  key_name = "final_project"
 
   tags = {
     Name = "Stocks Trading Robot Instance"
@@ -78,12 +78,11 @@ locals {
   sudo git config --global --add safe.directory /home/ubuntu/Trading-Bot
 
   # Install Python dependencies
-  cd ~/Trading-Bot
-  sudo pip3 install -r requirements.txt
+  # cd ~/Trading-Bot
 
   # Build docker image
-  sudo docker build -t us_stocks_robot .
-  sudo docker run --name us_stocks_robot us_stocks_robot
+  # sudo docker build -t us_stocks_robot .
+  # sudo docker run --name us_stocks_robot us_stocks_robot
 
   EOF
 }
