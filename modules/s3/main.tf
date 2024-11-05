@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "trading_bot_bucket" { 
-    bucket = "stocks-trading-bucket-awsacademy"
+    bucket = "stocks-trading-robot-2024"
 
     tags = {
         Name = "Trading Bot S3 Bucket"

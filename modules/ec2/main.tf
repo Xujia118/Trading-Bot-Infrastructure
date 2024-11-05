@@ -22,25 +22,13 @@ resource "aws_instance" "stocks_trading_robot_instance" {
   ami           = var.ami_id
   instance_type = var.instance_type
   security_groups = [ aws_security_group.ec2_sg.name ]
-  key_name = "final_project"
+  key_name = "mbp17"
 
   tags = {
     Name = "Stocks Trading Robot Instance"
   }
 
   user_data = local.user_data_script // Script is below
-}
-
-# Output the instance ID
-output "instance_id" {
-  description = "The ID of the EC2 instance"
-  value       = aws_instance.stocks_trading_robot_instance.id
-}
-
-# Output the public IP address
-output "public_ip" {
-  description = "The public IP address of the EC2 instance"
-  value       = aws_instance.stocks_trading_robot_instance.public_ip
 }
 
 locals {
@@ -77,12 +65,7 @@ locals {
   sudo git clone https://github.com/Xujia118/Trading-Bot.git
   sudo git config --global --add safe.directory /home/ubuntu/Trading-Bot
 
-  # Install Python dependencies
-  # cd ~/Trading-Bot
-
-  # Build docker image
-  # sudo docker build -t us_stocks_robot .
-  # sudo docker run --name us_stocks_robot us_stocks_robot
-
+  # End of infrastructure deployment. Docker is handled by CI/CD.
+  
   EOF
 }
